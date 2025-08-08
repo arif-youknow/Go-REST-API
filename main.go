@@ -12,37 +12,35 @@ type Task struct{
 	Done bool `json: "done"`
 }
 
-
 //Task type er ekta slice globally create korlam
-var tasks []Task
-id:=10
-
-
-
+var myTask []Task
 
 
 func getTasks(w http.ResponseWriter, r *http.Request){
 
 w.Header().Set("Content-Type", "application/json")
-json.NewEncoder(w).Encode(tasks)
+json.NewEncoder(w).Encode(myTask)
 
 }
 
 func createTask(w http.ResponseWriter, r *http.Request){
 
+
 var task Task
 
 json.NewDecoder(r.Body).Decode(&task)
-task.ID = len(tasks) + 1
-tasks = append(tasks, task)
+task.ID = len(myTask) + 1
+myTask = append(myTask, task)
 
 w.Header().Set("Content-Type", "application/json")
-json.NewEncoder(w).Encode(tasks)
+json.NewEncoder(w).Encode(myTask)
+
+}
+
+func registration(w http.ResponseWriter, r *http.Request){
 
 
-
-
-
+fmt.Fprintln(w, "This is registration page")
 
 }
 
