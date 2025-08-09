@@ -7,14 +7,16 @@ import (
 )
 
 type Task struct{
-	ID int `json: "id"`
-	Title string `json: "title"`
-	Done bool `json: "done"`
+	ID int `json:"id"`
+	Title string `json:"title"`
+	Done bool `json:"done"`
 }
 
 //Task type er ekta slice globally create korlam
 var myTask []Task
 
+
+//=========get request=============
 
 func getTasks(w http.ResponseWriter, r *http.Request){
 
@@ -91,6 +93,7 @@ http.HandleFunc("/contact", contact)
 
 
 
-fmt.Println("server running...")
+fmt.Println("server running: http://localhost:3000/")
 http.ListenAndServe(":3000", nil)
 }
+
